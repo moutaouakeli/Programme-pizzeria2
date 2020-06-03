@@ -17,10 +17,7 @@ namespace Programme_pizzeria2
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -42,10 +39,7 @@ namespace Programme_pizzeria2
             gbIngredients_Enter(sender, e);
         }
 
-        private void frmCommande_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void gbIngredients_Enter(object sender, EventArgs e)
         {
@@ -87,30 +81,9 @@ namespace Programme_pizzeria2
             lblPrixSup.Text = Convert.ToString(n);
         }
 
-        private void lblPrix_Click(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void lblCHFIngredient_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPlus_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbBasePizza_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnPlus_Click(object sender, EventArgs e)
         {

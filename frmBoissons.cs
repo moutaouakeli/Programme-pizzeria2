@@ -45,7 +45,7 @@ namespace Programme_pizzeria2
 
         private void btnSuivant_Click(object sender, EventArgs e)
         {
-
+            
             List<string> Boissons = new List<string>();
             List<int> Quantities = new List<int>();
             List<DomainUpDown> listBoissonOrderedByName = gbBoissons.Controls.OfType<DomainUpDown>().OrderBy(c => c.Name).ToList();

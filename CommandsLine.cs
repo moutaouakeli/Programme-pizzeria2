@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Programme_pizzeria2
 {
-    class Commandes
+    public class CommandsLine
     {
-    }
+		private int quantity;
+
+		public int Quantity
+		{
+			get { return quantity; }
+			set { quantity = value; }
+		}
+
+
+	}
 }

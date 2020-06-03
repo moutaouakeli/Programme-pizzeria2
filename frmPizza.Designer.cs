@@ -92,7 +92,7 @@
             this.gbTaillePizza.TabIndex = 0;
             this.gbTaillePizza.TabStop = false;
             this.gbTaillePizza.Text = "Taille de la pizza";
-            this.gbTaillePizza.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // rbFamily
             // 
@@ -509,7 +509,7 @@
             this.gbBasePizza.TabIndex = 3;
             this.gbBasePizza.TabStop = false;
             this.gbBasePizza.Text = "Base de la pizza";
-            this.gbBasePizza.Enter += new System.EventHandler(this.gbBasePizza_Enter);
+            
             // 
             // rbBaseBBQ
             // 
@@ -576,7 +576,7 @@
             this.lblPlus.Size = new System.Drawing.Size(16, 17);
             this.lblPlus.TabIndex = 6;
             this.lblPlus.Text = "+";
-            this.lblPlus.Click += new System.EventHandler(this.lblPlus_Click);
+            
             // 
             // lblCHFIngredient
             // 
@@ -587,7 +587,7 @@
             this.lblCHFIngredient.Size = new System.Drawing.Size(110, 17);
             this.lblCHFIngredient.TabIndex = 7;
             this.lblCHFIngredient.Text = "CHF / Ingrédient";
-            this.lblCHFIngredient.Click += new System.EventHandler(this.lblCHFIngredient_Click);
+            
             // 
             // lblPrixSup
             // 
@@ -598,7 +598,7 @@
             this.lblPrixSup.Size = new System.Drawing.Size(16, 17);
             this.lblPrixSup.TabIndex = 8;
             this.lblPrixSup.Text = "0";
-            this.lblPrixSup.Click += new System.EventHandler(this.lblPrix_Click);
+            
             // 
             // label1
             // 
@@ -609,7 +609,7 @@
             this.label1.Size = new System.Drawing.Size(147, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Choix de la pizza :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // comboBox1
             // 
@@ -651,7 +651,7 @@
             this.Controls.Add(this.gbTaillePizza);
             this.Name = "frmPizza";
             this.Text = "Commande";
-            this.Load += new System.EventHandler(this.frmCommande_Load);
+            
             this.gbTaillePizza.ResumeLayout(false);
             this.gbTaillePizza.PerformLayout();
             this.gbIngredients.ResumeLayout(false);
