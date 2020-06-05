@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using Renci.SshNet;
+using Ubiety.Dns.Core.Records;
 
 namespace Programme_pizzeria2
 {
@@ -62,6 +65,40 @@ namespace Programme_pizzeria2
             cmd.ExecuteNonQuery();
 
         }
+        public void Login(string username,string password)
+        {
+            int i=0;
+            MySqlCommand cmd = new MySqlCommand();
+            cmd = conn.CreateCommand();
+            //cmd.Connection = conn;
+            
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM login WHERE username='" + username +"' and password= '" + password+"'";
+            
+           
+            cmd.ExecuteNonQuery();
+
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            i = Convert.ToInt32(dt.Rows.Count.ToString());
+            if (i == 0)
+            {
+                MessageBox.Show("Username ou mot de passe incorrecte");
+                //label = "Username ou mot de passe incorrecte";
+
+            }
+            else
+            {
+                frmPizza frmPizza = new frmPizza();
+                frmPizza.Show();
+            }
+        }
+
+
+    
+
+
 
         public void InsertPizza(int quantity, string product, string commands, string basis, string size)
         {

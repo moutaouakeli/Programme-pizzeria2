@@ -16,7 +16,7 @@ namespace Programme_pizzeria2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPizza());
+            Application.Run(new frmConnexion());
            // DBconnection db = new DBconnection();
             //db.NouvelleCommande();
         }

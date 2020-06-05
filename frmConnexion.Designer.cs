@@ -34,6 +34,7 @@
             this.txtMotDePasse = new System.Windows.Forms.TextBox();
             this.btnConnexion = new System.Windows.Forms.Button();
             this.btnAnnulerConn = new System.Windows.Forms.Button();
+            this.lblErreurConnexion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -43,9 +44,9 @@
             this.lblEmail.ForeColor = System.Drawing.Color.Black;
             this.lblEmail.Location = new System.Drawing.Point(12, 76);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(119, 32);
+            this.lblEmail.Size = new System.Drawing.Size(170, 32);
             this.lblEmail.TabIndex = 0;
-            this.lblEmail.Text = "E-mail :";
+            this.lblEmail.Text = "Username :";
             // 
             // lblMotDePasse
             // 
@@ -83,6 +84,7 @@
             this.btnConnexion.TabIndex = 4;
             this.btnConnexion.Text = "Connexion";
             this.btnConnexion.UseVisualStyleBackColor = false;
+            this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
             // 
             // btnAnnulerConn
             // 
@@ -94,6 +96,17 @@
             this.btnAnnulerConn.TabIndex = 5;
             this.btnAnnulerConn.Text = "Annuler";
             this.btnAnnulerConn.UseVisualStyleBackColor = false;
+            this.btnAnnulerConn.Click += new System.EventHandler(this.btnAnnulerConn_Click);
+            // 
+            // lblErreurConnexion
+            // 
+            this.lblErreurConnexion.AutoSize = true;
+            this.lblErreurConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErreurConnexion.ForeColor = System.Drawing.Color.Red;
+            this.lblErreurConnexion.Location = new System.Drawing.Point(108, 236);
+            this.lblErreurConnexion.Name = "lblErreurConnexion";
+            this.lblErreurConnexion.Size = new System.Drawing.Size(0, 25);
+            this.lblErreurConnexion.TabIndex = 6;
             // 
             // frmConnexion
             // 
@@ -101,6 +114,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(600, 394);
+            this.Controls.Add(this.lblErreurConnexion);
             this.Controls.Add(this.btnAnnulerConn);
             this.Controls.Add(this.btnConnexion);
             this.Controls.Add(this.txtMotDePasse);
@@ -109,6 +123,7 @@
             this.Controls.Add(this.lblEmail);
             this.Name = "frmConnexion";
             this.Text = "Connexion";
+            this.Load += new System.EventHandler(this.frmConnexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +137,7 @@
         private System.Windows.Forms.TextBox txtMotDePasse;
         private System.Windows.Forms.Button btnConnexion;
         private System.Windows.Forms.Button btnAnnulerConn;
+        private System.Windows.Forms.Label lblErreurConnexion;
     }
 }
 
