@@ -33,13 +33,11 @@
             this.rb40cm = new System.Windows.Forms.RadioButton();
             this.rb30cm = new System.Windows.Forms.RadioButton();
             this.gbIngredients = new System.Windows.Forms.GroupBox();
-            this.btnReinitialiser = new System.Windows.Forms.Button();
             this.gbBasePizza = new System.Windows.Forms.GroupBox();
             this.rbBaseBBQ = new System.Windows.Forms.RadioButton();
             this.rbBaseTomate = new System.Windows.Forms.RadioButton();
             this.rbBaseCreme = new System.Windows.Forms.RadioButton();
             this.btnSuivant = new System.Windows.Forms.Button();
-            this.btnPrecedent = new System.Windows.Forms.Button();
             this.lblPlus = new System.Windows.Forms.Label();
             this.lblCHFIngredient = new System.Windows.Forms.Label();
             this.lblPrixSup = new System.Windows.Forms.Label();
@@ -105,19 +103,6 @@
             this.gbIngredients.TabIndex = 1;
             this.gbIngredients.TabStop = false;
             this.gbIngredients.Text = "Ingrédients supplémentaires";
-            
-            // 
-            // btnReinitialiser
-            // 
-            this.btnReinitialiser.BackColor = System.Drawing.Color.White;
-            this.btnReinitialiser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReinitialiser.Location = new System.Drawing.Point(327, 569);
-            this.btnReinitialiser.Name = "btnReinitialiser";
-            this.btnReinitialiser.Size = new System.Drawing.Size(194, 63);
-            this.btnReinitialiser.TabIndex = 2;
-            this.btnReinitialiser.Text = "Réinitialiser";
-            this.btnReinitialiser.UseVisualStyleBackColor = false;
-            this.btnReinitialiser.Click += new System.EventHandler(this.btnReinitialiser_Click);
             // 
             // gbBasePizza
             // 
@@ -176,17 +161,6 @@
             this.btnSuivant.Text = "Suivant";
             this.btnSuivant.UseVisualStyleBackColor = false;
             this.btnSuivant.Click += new System.EventHandler(this.btnSuivant_Click);
-            // 
-            // btnPrecedent
-            // 
-            this.btnPrecedent.BackColor = System.Drawing.Color.White;
-            this.btnPrecedent.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrecedent.Location = new System.Drawing.Point(55, 569);
-            this.btnPrecedent.Name = "btnPrecedent";
-            this.btnPrecedent.Size = new System.Drawing.Size(194, 63);
-            this.btnPrecedent.TabIndex = 5;
-            this.btnPrecedent.Text = "Précédent";
-            this.btnPrecedent.UseVisualStyleBackColor = false;
             // 
             // lblPlus
             // 
@@ -260,10 +234,8 @@
             this.Controls.Add(this.lblPrixSup);
             this.Controls.Add(this.lblCHFIngredient);
             this.Controls.Add(this.lblPlus);
-            this.Controls.Add(this.btnPrecedent);
             this.Controls.Add(this.btnSuivant);
             this.Controls.Add(this.gbBasePizza);
-            this.Controls.Add(this.btnReinitialiser);
             this.Controls.Add(this.gbIngredients);
             this.Controls.Add(this.gbTaillePizza);
             this.Name = "frmPizza";
@@ -285,13 +257,11 @@
         private System.Windows.Forms.RadioButton rb40cm;
         private System.Windows.Forms.RadioButton rb30cm;
         private System.Windows.Forms.GroupBox gbIngredients;
-        private System.Windows.Forms.Button btnReinitialiser;
         private System.Windows.Forms.GroupBox gbBasePizza;
         private System.Windows.Forms.RadioButton rbBaseBBQ;
         private System.Windows.Forms.RadioButton rbBaseTomate;
         private System.Windows.Forms.RadioButton rbBaseCreme;
         private System.Windows.Forms.Button btnSuivant;
-        private System.Windows.Forms.Button btnPrecedent;
         private System.Windows.Forms.Label lblPlus;
         private System.Windows.Forms.Label lblCHFIngredient;
         private System.Windows.Forms.Label lblPrixSup;

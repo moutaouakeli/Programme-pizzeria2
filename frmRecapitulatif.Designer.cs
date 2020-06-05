@@ -32,7 +32,6 @@
             this.chProduit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbQuantite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnPrecedent = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.lblTotalF = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -67,17 +66,6 @@
             // 
             this.chTotal.Text = "Total";
             this.chTotal.Width = 357;
-            // 
-            // btnPrecedent
-            // 
-            this.btnPrecedent.BackColor = System.Drawing.Color.White;
-            this.btnPrecedent.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrecedent.Location = new System.Drawing.Point(42, 573);
-            this.btnPrecedent.Name = "btnPrecedent";
-            this.btnPrecedent.Size = new System.Drawing.Size(194, 63);
-            this.btnPrecedent.TabIndex = 13;
-            this.btnPrecedent.Text = "Précédent";
-            this.btnPrecedent.UseVisualStyleBackColor = false;
             // 
             // btnValider
             // 
@@ -115,7 +103,6 @@
             this.ClientSize = new System.Drawing.Size(841, 648);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblTotalF);
-            this.Controls.Add(this.btnPrecedent);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.listView1);
             this.Name = "frmRecapitulatif";
@@ -132,7 +119,6 @@
         private System.Windows.Forms.ColumnHeader chProduit;
         private System.Windows.Forms.ColumnHeader cbQuantite;
         private System.Windows.Forms.ColumnHeader chTotal;
-        private System.Windows.Forms.Button btnPrecedent;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Label lblTotalF;
         private System.Windows.Forms.TextBox textBox1;
