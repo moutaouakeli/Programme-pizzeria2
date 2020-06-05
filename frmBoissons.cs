@@ -16,37 +16,13 @@ namespace Programme_pizzeria2
         {
             InitializeComponent();
         }
-        private string NomBoisson(String b)
-        {
-            switch (b)
-            {
-                case "ud7up": return "7 UP MOJITO";
-                case "udCafe": return "CAFE";
-                case "udCaprisun": return "CAPRISUN";
-                case "udCoca": return "COCA COLA";
-                case "udCoca15L": return "COCA COLA 1.5 L";
-                case "udCocaZero": return "COCA COLA ZERO";
-                case "udEauGaz50cl": return "EAU GAZEUSE 50 CL";
-                case "udEauPlate50cl": return "EAU PLATE 50 CL";
-                case "udFantaLemon": return "FANTA LEMON";
-                case "udFantaOrange": return "FANTA ORANGE";
-                case "udNesteaCitron": return "NESTEA CITRON";
-                case "udNesteaPeche": return "NESTEA PECHE";
-                case "udOasis": return "OASIS";
-                case "udOasis2l": return "OASIS 2L";
-                case "udOasisPomme": return "OASIS POMME CASSIS FRAMBOISE";
-                case "udOrangina": return "ORANGINA";
-                case "udSprite": return "SPRITE";
-                case "udTropico": return "TROPICO";
-
-                default: return "erreur";
-            }
-        }
+        
 
         private void btnSuivant_Click(object sender, EventArgs e)
         {
-            
-            List<string> Boissons = new List<string>();
+
+            List<Products> Boissons = new List<Products>();
+            Products p = new Products();
             List<int> Quantities = new List<int>();
             List<DomainUpDown> listBoissonOrderedByName = gbBoissons.Controls.OfType<DomainUpDown>().OrderBy(c => c.Name).ToList();
             foreach (var c in listBoissonOrderedByName)
@@ -54,16 +30,17 @@ namespace Programme_pizzeria2
                 //Console.WriteLine("Boissons text : " + Convert.ToInt16(c.Text));
                 if (Convert.ToInt16(c.Text) > 0)
                 {
-                    Boissons.Add(NomBoisson(c.Name));
+                    p = new Products();
+                    p.Id = Convert.ToInt16(c.Name.Substring(2));
+                    Boissons.Add(p);
                     Quantities.Add(Convert.ToInt16(c.Text));
                 }
             }
-            Console.WriteLine("Boissons Count : " + Boissons.Count());
             DBconnection db = new DBconnection();
             db.InsertBoisson(Boissons, Quantities);
             frmDesserts dessert = new frmDesserts();
             dessert.Show();
-
+            dessert.frmDesserts_Load(sender, e);
 
 
 
@@ -84,9 +61,63 @@ namespace Programme_pizzeria2
             }
         }
 
-        private void frmBoissons_Load(object sender, EventArgs e)
+        public void frmBoissons_Load(object sender, EventArgs e)
         {
-            gbBoissons_Enter(sender, e);
+            DBconnection db = new DBconnection();
+            List<Products> lstProd = db.GetDrinks();
+            int i = 0;
+            int j = 0;
+            foreach (Products prod in lstProd)
+            {
+                if (i < 9)
+                {
+                    Label lbl = new Label();
+                    lbl.AutoSize = true;
+                    lbl.Location = new System.Drawing.Point(50, 40 + 40 * i);
+                    lbl.Name = "lbl" + prod.Id;
+                    lbl.Size = new System.Drawing.Size(84, 20);
+                    lbl.TabIndex = 53;
+                    lbl.Text = prod.Name;
+
+                    DomainUpDown dup = new DomainUpDown();
+                    dup.Location = new System.Drawing.Point(200, 40 + 40 * i);
+                    dup.Name = "ud" + prod.Id;
+                    dup.Size = new System.Drawing.Size(58, 27);
+                    dup.TabIndex = 24;
+                    dup.Text = "0";
+
+                    this.gbBoissons.Controls.Add(lbl);
+                    this.gbBoissons.Controls.Add(dup);
+                    //this.Controls.Add(lbl);
+                    //this.Controls.Add(dup);
+                    i++;
+                }
+                else
+                {
+                    Label lbl = new Label();
+                    lbl.AutoSize = true;
+                    lbl.Location = new System.Drawing.Point(300, 40 + 40 * j);
+                    lbl.Name = "lbl" + prod.Id;
+                    lbl.Size = new System.Drawing.Size(84, 20);
+                    lbl.TabIndex = 53;
+                    lbl.Text = prod.Name;
+
+                    DomainUpDown dup = new DomainUpDown();
+                    dup.Location = new System.Drawing.Point(400, 40 + 40 * j);
+                    dup.Name = "ud" + prod.Id;
+                    dup.Size = new System.Drawing.Size(58, 27);
+                    dup.TabIndex = 24;
+                    dup.Text = "0";
+
+                    this.gbBoissons.Controls.Add(lbl);
+                    this.gbBoissons.Controls.Add(dup);
+                    //this.Controls.Add(lbl);
+                    //this.Controls.Add(dup);
+                    j++;
+                }
+
+
+            }
         }
     }
 }

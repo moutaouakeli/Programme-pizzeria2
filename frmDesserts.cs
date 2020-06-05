@@ -16,39 +16,30 @@ namespace Programme_pizzeria2
         {
             InitializeComponent();
         }
-        private string NomDesserts(String d)
-        {
-            switch (d)
-            {
-                case "udFondantCaramel1": return "FONDANT AU CARAMEL";
-                case "udFondantChocolat2": return "FONDANT AU CHOCOLAT";
-                case "udTarteDaim3": return "TARTE AU DAIM";
-                case "udTiramisuDaim4": return "TIRAMISU DAIM";
-                case "udTiramisuOreo5": return "TIRAMISU OREO";
-                case "udTiramisuSpeculos6": return "TIRAMISU SPECULOS";
-               
-
-                default: return "erreur";
-            }
-        }
+        
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            List<string> Desserts = new List<string>();
+            List<Products> Desserts = new List<Products>();
             List<int> Quantities = new List<int>();
+            Products p = new Products();
             List<DomainUpDown> listBoissonOrderedByName = gbDesserts.Controls.OfType<DomainUpDown>().OrderBy(c => c.Name).ToList();
             foreach (var c in listBoissonOrderedByName)
             {
                 //Console.WriteLine("Boissons text : " + Convert.ToInt16(c.Text));
                 if (Convert.ToInt16(c.Text) > 0)
                 {
-                    Desserts.Add(NomDesserts(c.Name));
+                    p = new Products();
+                    p.Id = Convert.ToInt16(c.Name.Substring(2));
+                    Desserts.Add(p);
                     Quantities.Add(Convert.ToInt16(c.Text));
                 }
             }
-            Console.WriteLine("Desserts Count : " + Desserts.Count());
             DBconnection db = new DBconnection();
             db.InsertDessert(Desserts, Quantities);
+            frmRecapitulatif recap = new frmRecapitulatif();
+            recap.Show();
+            recap.frmRecapitulatif_Load(sender, e);
         }
 
         private void gbDesserts_Enter(object sender, EventArgs e)
@@ -63,9 +54,63 @@ namespace Programme_pizzeria2
             }
         }
 
-        private void frmDesserts_Load(object sender, EventArgs e)
+        public void frmDesserts_Load(object sender, EventArgs e)
         {
-            gbDesserts_Enter(sender, e);
+            DBconnection db = new DBconnection();
+            List<Products> lstProd = db.GetDesserts();
+            int i = 0;
+            int j = 0;
+            foreach (Products prod in lstProd)
+            {
+                if (i < 4)
+                {
+                    Label lbl = new Label();
+                    lbl.AutoSize = true;
+                    lbl.Location = new System.Drawing.Point(50, 40 + 40 * i);
+                    lbl.Name = "lbl" + prod.Id;
+                    lbl.Size = new System.Drawing.Size(84, 20);
+                    lbl.TabIndex = 53;
+                    lbl.Text = prod.Name;
+
+                    DomainUpDown dup = new DomainUpDown();
+                    dup.Location = new System.Drawing.Point(200, 40 + 40 * i);
+                    dup.Name = "ud" + prod.Id;
+                    dup.Size = new System.Drawing.Size(58, 27);
+                    dup.TabIndex = 24;
+                    dup.Text = "0";
+
+                    this.gbDesserts.Controls.Add(lbl);
+                    this.gbDesserts.Controls.Add(dup);
+                    //this.Controls.Add(lbl);
+                    //this.Controls.Add(dup);
+                    i++;
+                }
+                else
+                {
+                    Label lbl = new Label();
+                    lbl.AutoSize = true;
+                    lbl.Location = new System.Drawing.Point(300, 40 + 40 * j);
+                    lbl.Name = "lbl" + prod.Id;
+                    lbl.Size = new System.Drawing.Size(84, 20);
+                    lbl.TabIndex = 53;
+                    lbl.Text = prod.Name;
+
+                    DomainUpDown dup = new DomainUpDown();
+                    dup.Location = new System.Drawing.Point(400, 40 + 40 * j);
+                    dup.Name = "ud" + prod.Id;
+                    dup.Size = new System.Drawing.Size(58, 27);
+                    dup.TabIndex = 24;
+                    dup.Text = "0";
+
+                    this.gbDesserts.Controls.Add(lbl);
+                    this.gbDesserts.Controls.Add(dup);
+                    //this.Controls.Add(lbl);
+                    //this.Controls.Add(dup);
+                    j++;
+                }
+
+
+            }
         }
     }
 }

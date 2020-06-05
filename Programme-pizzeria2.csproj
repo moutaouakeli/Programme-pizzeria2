@@ -97,6 +97,7 @@
     <Compile Include="Categories.cs" />
     <Compile Include="Clients.cs" />
     <Compile Include="CommandsLine.cs" />
+    <Compile Include="Commands_has_products.cs" />
     <Compile Include="DBconnection.cs" />
     <Compile Include="Employés.cs" />
     <Compile Include="Formats.cs" />

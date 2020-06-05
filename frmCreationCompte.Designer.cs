@@ -39,11 +39,11 @@
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtCP = new System.Windows.Forms.TextBox();
-            this.txtLocalite = new System.Windows.Forms.TextBox();
             this.rtbAdresse = new System.Windows.Forms.RichTextBox();
-            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.txtCP = new System.Windows.Forms.TextBox();
+            this.txtlocalite = new System.Windows.Forms.TextBox();
             this.btnValider = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNom
@@ -100,7 +100,7 @@
             // 
             this.lblAdresse.AutoSize = true;
             this.lblAdresse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdresse.Location = new System.Drawing.Point(442, 76);
+            this.lblAdresse.Location = new System.Drawing.Point(442, 78);
             this.lblAdresse.Name = "lblAdresse";
             this.lblAdresse.Size = new System.Drawing.Size(81, 20);
             this.lblAdresse.TabIndex = 5;
@@ -111,7 +111,7 @@
             // 
             this.lblCP.AutoSize = true;
             this.lblCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCP.Location = new System.Drawing.Point(442, 242);
+            this.lblCP.Location = new System.Drawing.Point(442, 244);
             this.lblCP.Name = "lblCP";
             this.lblCP.Size = new System.Drawing.Size(42, 20);
             this.lblCP.TabIndex = 6;
@@ -145,38 +145,27 @@
             this.txtEmail.Size = new System.Drawing.Size(300, 22);
             this.txtEmail.TabIndex = 10;
             // 
-            // txtCP
-            // 
-            this.txtCP.Location = new System.Drawing.Point(529, 242);
-            this.txtCP.Name = "txtCP";
-            this.txtCP.Size = new System.Drawing.Size(109, 22);
-            this.txtCP.TabIndex = 12;
-            // 
-            // txtLocalite
-            // 
-            this.txtLocalite.Location = new System.Drawing.Point(529, 340);
-            this.txtLocalite.Name = "txtLocalite";
-            this.txtLocalite.Size = new System.Drawing.Size(300, 22);
-            this.txtLocalite.TabIndex = 13;
-            // 
             // rtbAdresse
             // 
             this.rtbAdresse.Location = new System.Drawing.Point(529, 76);
             this.rtbAdresse.Name = "rtbAdresse";
             this.rtbAdresse.Size = new System.Drawing.Size(290, 140);
-            this.rtbAdresse.TabIndex = 14;
+            this.rtbAdresse.TabIndex = 17;
             this.rtbAdresse.Text = "";
             // 
-            // btnAnnuler
+            // txtCP
             // 
-            this.btnAnnuler.BackColor = System.Drawing.Color.White;
-            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(529, 486);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(228, 87);
-            this.btnAnnuler.TabIndex = 15;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.txtCP.Location = new System.Drawing.Point(529, 244);
+            this.txtCP.Name = "txtCP";
+            this.txtCP.Size = new System.Drawing.Size(123, 22);
+            this.txtCP.TabIndex = 18;
+            // 
+            // txtlocalite
+            // 
+            this.txtlocalite.Location = new System.Drawing.Point(529, 340);
+            this.txtlocalite.Name = "txtlocalite";
+            this.txtlocalite.Size = new System.Drawing.Size(290, 22);
+            this.txtlocalite.TabIndex = 19;
             // 
             // btnValider
             // 
@@ -185,9 +174,21 @@
             this.btnValider.Location = new System.Drawing.Point(102, 486);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(228, 87);
-            this.btnValider.TabIndex = 16;
+            this.btnValider.TabIndex = 20;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = false;
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.White;
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.Location = new System.Drawing.Point(591, 486);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(228, 87);
+            this.btnAnnuler.TabIndex = 21;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // frmCreationCompte
             // 
@@ -195,11 +196,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(841, 608);
-            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnAnnuler);
-            this.Controls.Add(this.rtbAdresse);
-            this.Controls.Add(this.txtLocalite);
+            this.Controls.Add(this.btnValider);
+            this.Controls.Add(this.txtlocalite);
             this.Controls.Add(this.txtCP);
+            this.Controls.Add(this.rtbAdresse);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtTel);
             this.Controls.Add(this.txtPrenom);
@@ -231,10 +232,10 @@
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtCP;
-        private System.Windows.Forms.TextBox txtLocalite;
         private System.Windows.Forms.RichTextBox rtbAdresse;
-        private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.TextBox txtCP;
+        private System.Windows.Forms.TextBox txtlocalite;
         private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }

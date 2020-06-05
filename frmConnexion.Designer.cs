@@ -101,12 +101,14 @@
             // lblErreurConnexion
             // 
             this.lblErreurConnexion.AutoSize = true;
-            this.lblErreurConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErreurConnexion.ForeColor = System.Drawing.Color.Red;
-            this.lblErreurConnexion.Location = new System.Drawing.Point(108, 236);
+            this.lblErreurConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErreurConnexion.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblErreurConnexion.Location = new System.Drawing.Point(330, 224);
             this.lblErreurConnexion.Name = "lblErreurConnexion";
-            this.lblErreurConnexion.Size = new System.Drawing.Size(0, 25);
+            this.lblErreurConnexion.Size = new System.Drawing.Size(157, 25);
             this.lblErreurConnexion.TabIndex = 6;
+            this.lblErreurConnexion.Text = "Créer un compte";
+            this.lblErreurConnexion.Click += new System.EventHandler(this.lblErreurConnexion_Click);
             // 
             // frmConnexion
             // 

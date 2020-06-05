@@ -9,6 +9,24 @@ namespace Programme_pizzeria2
     public class Products
     {
 
+        public Products(String n, Double a)
+        {
+            Name = n;
+            Amount = a;
+        }
+
+        public Products()
+        {
+        }
+
+        public int Id;
+
+        public int id
+        {
+            get { return Id; }
+            set { Id = value; }
+        }
+
         private string name;
 
         public string Name

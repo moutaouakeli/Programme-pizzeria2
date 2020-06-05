@@ -17,31 +17,45 @@ namespace Programme_pizzeria2
             InitializeComponent();
         }
 
-        
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+
+        public void frmPizza_Load(object sender, EventArgs e)
         {
-            gbIngredients_Enter(sender, e);
+            DBconnection db = new DBconnection();
+            List<Products> lstProd = db.GetPizzas();
+            foreach (Products prod in lstProd)
+            {
+                cbPizza.Items.Add(prod.Name);
+            }
+            lstProd = new List<Products>();
+            lstProd = db.Getingredients();
+            int i = 0;
+            int j = 0;
+            foreach (Products prod in lstProd)
+            {
+                if (i < 5)
+                {
+
+                    CheckBox dup = new CheckBox();
+                    dup.Location = new System.Drawing.Point(10 + j, 40 + 40 * i);
+                    dup.Name = "ud" + prod.Id;
+                    dup.Text = prod.Name;
+                    dup.Size = new System.Drawing.Size(100, 20);
+                    dup.TabIndex = 24;
+                    this.gbIngredients.Controls.Add(dup);
+                    i++;
+                }
+                else
+                {
+                    i = 0;
+                    j = j + 110;
+                }
+
+
+            }
         }
 
-        private void checkBox10_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void checkBox14_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void checkBox24_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        
-
-        private void gbIngredients_Enter(object sender, EventArgs e)
+        private void gbIngredients_MouseEnter(object sender, EventArgs e)
         {
             int n = 0;
             List<CheckBox> listCheckboxesOrderedByName = gbIngredients.Controls.Cast<CheckBox>().OrderBy(c => c.Name).ToList();
@@ -53,22 +67,24 @@ namespace Programme_pizzeria2
                     if (c.Checked)
                     {
                         n = n + 2;
-                        
+                        //n = Convert.ToInt16(label2.Text) + 2
                     }
                 }
                 if (rb40cm.Checked)
                 {
+                    Console.WriteLine("40 cm checked, BindableSupport est : " + n);
                     if (c.Checked)
                     {
-                        
+                        //int n = Convert.ToInt16(label2.Text) + 3;
                         n = n + 3;
+
                     }
                 }
                 if (rbFamily.Checked)
                 {
                     if (c.Checked)
                     {
-                        
+                        //int n = Convert.ToInt16(label2.Text) + 4;
                         n = n + 4;
                     }
 
@@ -81,14 +97,74 @@ namespace Programme_pizzeria2
             lblPrixSup.Text = Convert.ToString(n);
         }
 
-       
 
-        
+
+        private void frmPizza_reset(object sender, EventArgs e)
+        {
+
+            rb30cm.Checked = true;
+
+            List<RadioButton> listgbBasePizzaOrderedByName = gbBasePizza.Controls.Cast<RadioButton>().OrderBy(c => c.Name).ToList();
+
+            foreach (var c in listgbBasePizzaOrderedByName)
+            {
+                c.Checked = false;
+            }
+
+            List<CheckBox> listCheckboxesOrderedByName = gbIngredients.Controls.Cast<CheckBox>().OrderBy(c => c.Name).ToList();
+
+            foreach (var c in listCheckboxesOrderedByName)
+            {
+                c.Checked = false;
+            }
+        }
+
+
+
+
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            frmPizza cmd = new frmPizza();
-            cmd.Show();
+            List<RadioButton> listBaseOrderedByName = gbBasePizza.Controls.Cast<RadioButton>().OrderBy(c => c.Name).ToList();
+            String Base = "";
+            foreach (var c in listBaseOrderedByName)
+            {
+                if (c.Checked)
+                {
+                    Base = c.Text;
+                }
+            }
+            List<RadioButton> listSizeOrderedByName = gbTaillePizza.Controls.Cast<RadioButton>().OrderBy(c => c.Name).ToList();
+            String Size = "";
+            foreach (var c in listSizeOrderedByName)
+            {
+                if (c.Checked)
+                {
+                    Size = c.Text;
+                }
+            }
+
+            DBconnection db = new DBconnection();
+            db.InsertPizza(1, cbPizza.Text, "", Base, Size);
+
+            frmPizza_reset(sender, e);
+        }
+        private void AddIngredient(object sender, EventArgs e)
+        {
+            List<Products> Ingredients = new List<Products>();
+            Products p = new Products();
+            List<CheckBox> listBoissonOrderedByName = gbIngredients.Controls.OfType<CheckBox>().OrderBy(c => c.Name).ToList();
+            foreach (var c in listBoissonOrderedByName)
+            {
+                if (c.Checked)
+                {
+                    p = new Products();
+                    p.Id = Convert.ToInt16(c.Name.Substring(2));
+                    Ingredients.Add(p);
+                }
+            }
+            DBconnection db = new DBconnection();
+            db.InsertIngredients(Ingredients);
         }
 
         private void btnSuivant_Click(object sender, EventArgs e)
@@ -113,134 +189,23 @@ namespace Programme_pizzeria2
             }
 
             DBconnection db = new DBconnection();
-            db.InsertPizza(1, "marguarita", "", Base, Size);
+            db.InsertPizza(1, cbPizza.Text, "", Base, Size);
+            AddIngredient(sender, e);
             frmBoissons boisson = new frmBoissons();
             boisson.Show();
+            boisson.frmBoissons_Load(sender, e);
         }
 
-        private void cbChampi7_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
+       
 
-        private void cbSalami13_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
 
-        private void cbOeufs19_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
+        
 
-        private void cbPoulet25_CheckedChanged(object sender, EventArgs e)
+        
+       
+        private void btnReinitialiser_Click(object sender, EventArgs e)
         {
-            gbIngredients_Enter(sender, e);
-        }
 
-        private void cbCourg2_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbOlives8_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbViandeHachee26_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbArtich3_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbOignons9_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbGruyere15_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbCrevettes21_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbKebab27_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbPoivr4_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbRucola10_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbFeta16_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbFruitDeMer22_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbMerguez28_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbTomate5_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbJambon11_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbGorgonzola17_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbThon23_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbCapre6_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbLard12_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbRicotta18_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
-        }
-
-        private void cbParmesan29_CheckedChanged(object sender, EventArgs e)
-        {
-            gbIngredients_Enter(sender, e);
         }
     }
 }

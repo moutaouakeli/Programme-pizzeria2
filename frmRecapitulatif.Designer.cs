@@ -120,6 +120,7 @@
             this.Controls.Add(this.listView1);
             this.Name = "frmRecapitulatif";
             this.Text = "frmRecapitulatif";
+            this.Load += new System.EventHandler(this.frmRecapitulatif_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

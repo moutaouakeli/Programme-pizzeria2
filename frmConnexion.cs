@@ -43,5 +43,12 @@ namespace Programme_pizzeria2
             //Hide password
             txtMotDePasse.PasswordChar = '*';
         }
+
+        private void lblErreurConnexion_Click(object sender, EventArgs e)
+        {
+            frmCreationCompte frmCreationCompte = new frmCreationCompte();
+            frmCreationCompte.Show();
+            this.Hide();
+        }
     }
 }

@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Programme_pizzeria2
 {
     public class Commands
     {
+
+		public static int command_id;
+		public Commands()
+		{
+			DBconnection db = new DBconnection();
+			command_id = db.createCommands();
+			frmPizza frmPizza = new frmPizza();
+			frmPizza.Show();
+		}
 
 		private int number;
 

@@ -21,5 +21,12 @@ namespace Programme_pizzeria2
         {
 
         }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            frmConnexion frmConnexion = new frmConnexion();
+            frmConnexion.Show();
+            this.Hide();
+        }
     }
 }
