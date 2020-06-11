@@ -103,6 +103,7 @@
             this.gbIngredients.TabIndex = 1;
             this.gbIngredients.TabStop = false;
             this.gbIngredients.Text = "Ingrédients supplémentaires";
+            this.gbIngredients.MouseEnter += new System.EventHandler(this.gbIngredients_MouseEnter);
             // 
             // gbBasePizza
             // 
@@ -209,6 +210,7 @@
             this.cbPizza.Name = "cbPizza";
             this.cbPizza.Size = new System.Drawing.Size(213, 24);
             this.cbPizza.TabIndex = 10;
+            this.cbPizza.SelectedIndexChanged += new System.EventHandler(this.cbPizza_SelectedIndexChanged);
             // 
             // btnPlus
             // 

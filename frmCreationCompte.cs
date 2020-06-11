@@ -28,5 +28,11 @@ namespace Programme_pizzeria2
             frmConnexion.Show();
             this.Hide();
         }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+            DBconnection db = new DBconnection();
+            db.InsertEmploye(txtPrenom.Text,txtNom.Text,txtTel.Text,txtEmail.Text,rtbAdresse.Text,1); //Rajouter une checkbox pour choisir la pizzeria
+        }
     }
 }

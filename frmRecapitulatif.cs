@@ -54,10 +54,38 @@ namespace Programme_pizzeria2
                 this.listView1.Controls.Add(lbl2);
                 total = total + prod.TotalProduct;
 
+                
+
                 i++;
 
             }
-            textBox1.Text = Convert.ToString(total);
+            Label lbl3 = new Label();
+            lbl3.AutoSize = true;
+            lbl3.Location = new System.Drawing.Point(50, 40 + 40 * i);
+            lbl3.Name = "lbl" + i;
+            lbl3.Size = new System.Drawing.Size(84, 20);
+            lbl3.TabIndex = 53;
+            lbl3.Text = "Supplément";
+            this.listView1.Controls.Add(lbl3);
+
+            Label lbl4 = new Label();
+            lbl4.AutoSize = true;
+            lbl4.Location = new System.Drawing.Point(450, 40 + 40 * i);
+            lbl4.Name = "lbl" + i;
+            lbl4.Size = new System.Drawing.Size(84, 20);
+            lbl4.TabIndex = 53;
+            lbl4.Text = Convert.ToString(Commands.command_sup);
+            this.listView1.Controls.Add(lbl4);
+
+            textBox1.Enabled = false;
+            textBox1.Text = Convert.ToString(total+Commands.command_sup);
+
+        }
+
+        private void btnNouvelleCommande_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new Commands();
         }
     }
 }

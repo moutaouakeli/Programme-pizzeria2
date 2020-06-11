@@ -11,12 +11,15 @@ namespace Programme_pizzeria2
     {
 
 		public static int command_id;
+		public static int command_sup=0;
 		public Commands()
 		{
 			DBconnection db = new DBconnection();
 			command_id = db.createCommands();
+			command_sup = 0;
 			frmPizza frmPizza = new frmPizza();
 			frmPizza.Show();
+			
 		}
 
 		private int number;

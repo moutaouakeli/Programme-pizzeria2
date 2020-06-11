@@ -137,7 +137,7 @@ namespace Programme_pizzeria2
         {
 
             //Console.WriteLine(product + " " + basis + " " + size);
-            int commands_id = 1;
+            int commands_id = Commands.command_id;
             int basis_id = GetBasisID(basis);
             int product_id = GetProductsID(product);
             //int basis_id = 3;
@@ -163,7 +163,7 @@ namespace Programme_pizzeria2
             int basis_id = 4;
             int product_id = 0;
             //int basis_id = 3;
-            int size_id = 8;
+            int size_id = 4;
             int i = 0;
             foreach (Products b in Ingredients)
             {
@@ -189,7 +189,7 @@ namespace Programme_pizzeria2
             int basis_id = 4;
             int product_id = 0;
             //int basis_id = 3;
-            int size_id = 7;
+            int size_id = 4;
             int i = 0;
             //Console.WriteLine(product + " " + basis + " " + size);
             foreach (var b in boissons)
@@ -219,7 +219,7 @@ namespace Programme_pizzeria2
             int basis_id = 4;
             int product_id = 0;
             //int basis_id = 3;
-            int size_id = 7;
+            int size_id = 4;
             int i = 0;
             //Console.WriteLine(product + " " + basis + " " + size);
             foreach (var b in Desserts)
@@ -241,7 +241,25 @@ namespace Programme_pizzeria2
 
 
         }
+        public int GetsuppIngr(string size)
+        {
+            int r = -1;
+            MySqlDataReader rdr = null;
+            string stm = "SELECT supIngr FROM Sizes where Value like '%" + size + "%'";
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            rdr = cmd.ExecuteReader();
 
+            while (rdr.Read())
+            {
+                r = rdr.GetInt32(0);
+            }
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+            return r;
+
+        }
         public int GetSizeID(string size)
         {
             int r = -1;
@@ -422,7 +440,7 @@ namespace Programme_pizzeria2
                 "where p.id = cp.products_id " +
                 "and b.id = cp.basis_id " +
                 "and s.id = cp.sizes_id " +
-                "and cp.commands_id = " + command_id;
+                "and cp.commands_id = " + command_id + " ORDER BY cp.id";
 
             MySqlCommand cmd = new MySqlCommand(stm, conn);
             rdr = cmd.ExecuteReader();
@@ -443,7 +461,26 @@ namespace Programme_pizzeria2
 
         }
 
+        public void InsertEmploye(string FirstName, string lastName, string tel, string Email,string Address,int pizzerias_id)
+        {
 
+           
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "INSERT INTO employees(FirstName, LastName, Tel, Email, Address,Pizzerias_id) VALUES(@F, @L, @T, @E,@A, @P)";
+            cmd.Prepare();
+
+            cmd.Parameters.AddWithValue("@F", FirstName);
+            cmd.Parameters.AddWithValue("@L", lastName);
+            cmd.Parameters.AddWithValue("@T", tel);
+            cmd.Parameters.AddWithValue("@E", Email);
+            cmd.Parameters.AddWithValue("@A", Address);
+            cmd.Parameters.AddWithValue("@P", pizzerias_id);
+            cmd.ExecuteNonQuery();
+
+
+        }
 
 
 

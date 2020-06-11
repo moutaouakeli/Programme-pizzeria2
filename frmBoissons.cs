@@ -41,6 +41,7 @@ namespace Programme_pizzeria2
             frmDesserts dessert = new frmDesserts();
             dessert.Show();
             dessert.frmDesserts_Load(sender, e);
+            this.Close();
 
 
 
@@ -73,14 +74,14 @@ namespace Programme_pizzeria2
                 {
                     Label lbl = new Label();
                     lbl.AutoSize = true;
-                    lbl.Location = new System.Drawing.Point(50, 40 + 40 * i);
+                    lbl.Location = new System.Drawing.Point(50+j, 40 + 40 * i);
                     lbl.Name = "lbl" + prod.Id;
                     lbl.Size = new System.Drawing.Size(84, 20);
                     lbl.TabIndex = 53;
                     lbl.Text = prod.Name;
 
                     DomainUpDown dup = new DomainUpDown();
-                    dup.Location = new System.Drawing.Point(200, 40 + 40 * i);
+                    dup.Location = new System.Drawing.Point(200+j, 40 + 40 * i);
                     dup.Name = "ud" + prod.Id;
                     dup.Size = new System.Drawing.Size(58, 27);
                     dup.TabIndex = 24;
@@ -94,26 +95,29 @@ namespace Programme_pizzeria2
                 }
                 else
                 {
-                    Label lbl = new Label();
-                    lbl.AutoSize = true;
-                    lbl.Location = new System.Drawing.Point(300, 40 + 40 * j);
-                    lbl.Name = "lbl" + prod.Id;
-                    lbl.Size = new System.Drawing.Size(84, 20);
-                    lbl.TabIndex = 53;
-                    lbl.Text = prod.Name;
+                    i = 0;
+                    j = j + 250;
+                    /* Label lbl = new Label();
+                     lbl.AutoSize = true;
+                     lbl.Location = new System.Drawing.Point(300, 40 + 40 * j);
+                     lbl.Name = "lbl" + prod.Id;
+                     lbl.Size = new System.Drawing.Size(84, 20);
+                     lbl.TabIndex = 53;
+                     lbl.Text = prod.Name;
 
-                    DomainUpDown dup = new DomainUpDown();
-                    dup.Location = new System.Drawing.Point(400, 40 + 40 * j);
-                    dup.Name = "ud" + prod.Id;
-                    dup.Size = new System.Drawing.Size(58, 27);
-                    dup.TabIndex = 24;
-                    dup.Text = "0";
+                     DomainUpDown dup = new DomainUpDown();
+                     dup.Location = new System.Drawing.Point(400, 40 + 40 * j);
+                     dup.Name = "ud" + prod.Id;
+                     dup.Size = new System.Drawing.Size(58, 27);
+                     dup.TabIndex = 24;
+                     dup.Text = "0";
 
-                    this.gbBoissons.Controls.Add(lbl);
-                    this.gbBoissons.Controls.Add(dup);
-                    //this.Controls.Add(lbl);
-                    //this.Controls.Add(dup);
-                    j++;
+                     this.gbBoissons.Controls.Add(lbl);
+                     this.gbBoissons.Controls.Add(dup);
+                     //this.Controls.Add(lbl);
+                     //this.Controls.Add(dup);
+                     j++;*/
+
                 }
 
 

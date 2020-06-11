@@ -33,11 +33,11 @@ namespace Programme_pizzeria2
             int j = 0;
             foreach (Products prod in lstProd)
             {
-                if (i < 5)
+                if (i < 5)// Afficher 5 par 5
                 {
 
                     CheckBox dup = new CheckBox();
-                    dup.Location = new System.Drawing.Point(10 + j, 40 + 40 * i);
+                    dup.Location = new System.Drawing.Point(10 + j, 40 + 40 * i); 
                     dup.Name = "ud" + prod.Id;
                     dup.Text = prod.Name;
                     dup.Size = new System.Drawing.Size(100, 20);
@@ -48,7 +48,7 @@ namespace Programme_pizzeria2
                 else
                 {
                     i = 0;
-                    j = j + 110;
+                    j = j + 110;// Le decalage our afficher la colonne suivante
                 }
 
 
@@ -58,6 +58,7 @@ namespace Programme_pizzeria2
         private void gbIngredients_MouseEnter(object sender, EventArgs e)
         {
             int n = 0;
+            DBconnection db = new DBconnection();
             List<CheckBox> listCheckboxesOrderedByName = gbIngredients.Controls.Cast<CheckBox>().OrderBy(c => c.Name).ToList();
 
             foreach (var c in listCheckboxesOrderedByName)
@@ -66,7 +67,7 @@ namespace Programme_pizzeria2
                 {
                     if (c.Checked)
                     {
-                        n = n + 2;
+                        n = n + db.GetsuppIngr(rb30cm.Text);
                         //n = Convert.ToInt16(label2.Text) + 2
                     }
                 }
@@ -76,7 +77,7 @@ namespace Programme_pizzeria2
                     if (c.Checked)
                     {
                         //int n = Convert.ToInt16(label2.Text) + 3;
-                        n = n + 3;
+                        n = n + db.GetsuppIngr(rb40cm.Text);
 
                     }
                 }
@@ -85,7 +86,7 @@ namespace Programme_pizzeria2
                     if (c.Checked)
                     {
                         //int n = Convert.ToInt16(label2.Text) + 4;
-                        n = n + 4;
+                        n = n + db.GetsuppIngr(rbFamily.Text);
                     }
 
                 }
@@ -143,10 +144,11 @@ namespace Programme_pizzeria2
                     Size = c.Text;
                 }
             }
-
+            
+            Commands.command_sup = Commands.command_sup + Convert.ToInt32( lblPrixSup.Text);
             DBconnection db = new DBconnection();
             db.InsertPizza(1, cbPizza.Text, "", Base, Size);
-
+            AddIngredient(sender, e);
             frmPizza_reset(sender, e);
         }
         private void AddIngredient(object sender, EventArgs e)
@@ -187,23 +189,17 @@ namespace Programme_pizzeria2
                     Size = c.Text;
                 }
             }
-
+            Commands.command_sup = Commands.command_sup + Convert.ToInt32(lblPrixSup.Text);
             DBconnection db = new DBconnection();
             db.InsertPizza(1, cbPizza.Text, "", Base, Size);
             AddIngredient(sender, e);
             frmBoissons boisson = new frmBoissons();
             boisson.Show();
             boisson.frmBoissons_Load(sender, e);
+            this.Close();
         }
 
-       
-
-
-        
-
-        
-       
-        private void btnReinitialiser_Click(object sender, EventArgs e)
+        private void cbPizza_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -40,6 +40,7 @@ namespace Programme_pizzeria2
             frmRecapitulatif recap = new frmRecapitulatif();
             recap.Show();
             recap.frmRecapitulatif_Load(sender, e);
+            this.Close();
         }
 
         private void gbDesserts_Enter(object sender, EventArgs e)
@@ -62,18 +63,18 @@ namespace Programme_pizzeria2
             int j = 0;
             foreach (Products prod in lstProd)
             {
-                if (i < 4)
+                if (i < 8)
                 {
                     Label lbl = new Label();
                     lbl.AutoSize = true;
-                    lbl.Location = new System.Drawing.Point(50, 40 + 40 * i);
+                    lbl.Location = new System.Drawing.Point(20+j, 40 + 40 * i);
                     lbl.Name = "lbl" + prod.Id;
                     lbl.Size = new System.Drawing.Size(84, 20);
                     lbl.TabIndex = 53;
                     lbl.Text = prod.Name;
 
                     DomainUpDown dup = new DomainUpDown();
-                    dup.Location = new System.Drawing.Point(200, 40 + 40 * i);
+                    dup.Location = new System.Drawing.Point(200+j, 40 + 40 * i);
                     dup.Name = "ud" + prod.Id;
                     dup.Size = new System.Drawing.Size(58, 27);
                     dup.TabIndex = 24;
@@ -87,7 +88,9 @@ namespace Programme_pizzeria2
                 }
                 else
                 {
-                    Label lbl = new Label();
+                    i = 0;
+                    j = j + 250;
+                   /* Label lbl = new Label();
                     lbl.AutoSize = true;
                     lbl.Location = new System.Drawing.Point(300, 40 + 40 * j);
                     lbl.Name = "lbl" + prod.Id;
@@ -106,7 +109,7 @@ namespace Programme_pizzeria2
                     this.gbDesserts.Controls.Add(dup);
                     //this.Controls.Add(lbl);
                     //this.Controls.Add(dup);
-                    j++;
+                    j++;*/
                 }
 
 
